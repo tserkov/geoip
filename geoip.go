@@ -39,7 +39,6 @@ func Lookup(string ip) (*LookupResponse, error) {
 	res, err := client.Get(fmt.Sprintf(GEOIP_URL, ip))
 
 	if err != nil {
-		// Assume EU in the face of failure
 		return nil, err
 	}
 
@@ -50,7 +49,6 @@ func Lookup(string ip) (*LookupResponse, error) {
 	err := json.NewDecoder(res.Body).Decode(lookupResponse)
 
 	if err != nil {
-		// Assume EU in the face of failure
 		return nil, err
 	}
 
